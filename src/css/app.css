@@ -1,0 +1,11 @@
+html, body {
+  height: 100%;
+  font-family: 'Open Sans', sans-serif;
+}
+
+header {
+  display: table;
+  width: 100%;
+  padding: 20px;
+  background-color: #EDEDED;
+}
