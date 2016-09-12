@@ -4,8 +4,19 @@ html, body {
 }
 
 header {
-  display: table;
-  width: 100%;
   padding: 20px;
   background-color: #EDEDED;
+}
+
+header h1 {
+  margin-bottom: 15px;
+}
+
+header label {
+  font-size: 13px;
+  line-height: 150%;
+}
+
+header input {
+  margin: 0 15px;
 }

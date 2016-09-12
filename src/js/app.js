@@ -6,6 +6,21 @@ var Title = React.createClass({
  }
 });
 
+var Input = React.createClass({
+  handleChange: function(event) {
+    this.setState({value: event.target.value.substr(0, 9)});
+  },
+  render: function() {
+    return (
+      <input
+      type='text'
+      id={'input-' + this.props.name.toLowerCase()}
+      name={'input-' + this.props.name.toLowerCase()}
+      onChange={this.handleChange} />
+    );
+  }
+});
+
 var Label = React.createClass({
   render: function() {
     return (
@@ -13,14 +28,6 @@ var Label = React.createClass({
         {this.props.name}
         <Input name={this.props.name} />
       </label>
-    );
-  }
-});
-
-var Input = React.createClass({
-  render: function() {
-    return (
-      <input id={'input-' + this.props.name.toLowerCase()} name={'input-' + this.props.name.toLowerCase()} value='' />
     );
   }
 });
