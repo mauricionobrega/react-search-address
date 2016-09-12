@@ -16,6 +16,8 @@ var Input = React.createClass({
       type='text'
       id={'input-' + this.props.name.toLowerCase()}
       name={'input-' + this.props.name.toLowerCase()}
+      placeholder='00000-000'
+      pattern='[0-9]{5}[\-]?[0-9]{3}'
       onChange={this.handleChange} />
     );
   }
