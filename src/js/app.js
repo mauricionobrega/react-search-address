@@ -1,5 +1,30 @@
-var app = (function ($, win, doc) {
+app.maps = (function ($, win, doc) {
   'use strict';
+
+  function make(address) {
+    var fn = function(text) {return text.replace(/ /g, '+')};
+    return fn(address.logradouro) + ',' + fn(address.localidade)
+  };
+
+  function draw(response) {
+    var resultsMap = new google.maps.Map(document.getElementById('zipcode-map'), {
+        zoom: 100,
+        center: {lat: -34.397, lng: 150.644}
+      }),
+      geocoder = new google.maps.Geocoder(),
+      address = make(response);
+    geocoder.geocode({'address': address}, function(results, status) {
+      if (status === google.maps.GeocoderStatus.OK) {
+        resultsMap.setCenter(results[0].geometry.location);
+        var marker = new google.maps.Marker({
+          map: resultsMap,
+          position: results[0].geometry.location
+        });
+      } else {
+        console.log('Geocode was not successful for the following reason: ' + status);
+      }
+    });
+  };
 
   function init() {
     var Title = React.createClass({
@@ -36,9 +61,18 @@ var app = (function ($, win, doc) {
     });
 
     var Button = React.createClass({
+      handler: function() {
+        var id = 'input-' + this.props.name.toLowerCase(),
+            zipcode = doc.getElementById(id).value.replace(/\D/g, '')
+        reqwest({
+          url: 'https://viacep.com.br/ws/'+zipcode+'/json/?callback=?',
+          type: 'jsonp',
+          success: draw
+        });
+      },
       render: function() {
         return (
-          <button type='submit'>{this.props.text}</button>
+          <button type='submit' onClick={this.handler}>{this.props.text}</button>
         );
       }
     });
@@ -61,8 +95,10 @@ var app = (function ($, win, doc) {
     );
   };
 
+  init();
+
   return {
-    'init': init
+    'draw': draw
   }
 
-}(undefined, window, window.document)).init();
+}(undefined, window, window.document));

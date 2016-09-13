@@ -3,10 +3,12 @@ var gulp = require('gulp'),
     rename = require('gulp-rename'),
     uglify = require('gulp-uglify'),
     scripts = [
+      'src/js/vendor/reqwest.js',
       'src/js/vendor/react.js',
       'src/js/vendor/react-dom.js',
       'src/js/vendor/browser.js',
-      'src/js/vendor/InputElement.js'
+      'src/js/vendor/InputElement.js',
+      'src/js/init.js'
     ];
 
 gulp.task('scripts', function() {

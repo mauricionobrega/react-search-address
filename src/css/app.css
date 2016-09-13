@@ -20,3 +20,8 @@ header label {
 header input {
   margin: 0 15px;
 }
+
+#zipcode-map {
+  width: 100%;
+  height: 300px;
+}
