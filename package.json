@@ -2,8 +2,9 @@
   "name": "react-search-address",
   "version": "1.0.0",
   "description": "Search address by zipcode ",
-  "main": "index.js",
+  "main": "index.html",
   "scripts": {
+    "start": "http-server .",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
