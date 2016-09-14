@@ -1,5 +1,5 @@
 # React Maps
-React Maps instructions. [Demo Page](https://mauricionobrega.github.io/react-search-address/):
+React Maps instructions. [Demo Page](https://mauricionobrega.github.io/react-search-address/)
 
 Install dependences
 ---------
