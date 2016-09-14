@@ -1,13 +1,58 @@
 app.maps = (function ($, win, doc) {
   'use strict';
 
+  var contentWrapper = doc.getElementById('content-wrapper');
+
+  function addEvent(el, type, handler) {
+    if (el.attachEvent) el.attachEvent('on'+type, handler); else el.addEventListener(type, handler);
+  };
+
+  function addClass(el, className) {
+    if (el.classList) el.classList.add(className);
+    else if (!hasClass(el, className)) el.className += ' ' + className;
+  };
+
+  function removeClass(el, className) {
+    if (el.classList) el.classList.remove(className);
+    else el.className = el.className.replace(new RegExp('\\b'+ className+'\\b', 'g'), '');
+  };
+
   function make(address) {
     var fn = function(text) {return text.replace(/ /g, '+')};
     return fn(address.logradouro) + ',' + fn(address.localidade)
   };
 
+  var InfoMap = React.createClass({
+    render: function() {
+      return (
+        <div>
+          <label className='street-name'>{this.props.logradouro}</label>
+          <label>{this.props.bairro}</label>
+          <label>{this.props.localidade + ' - ' + this.props.uf}</label>
+          <label>{this.props.cep}</label>
+        </div>
+      );
+    }
+  });
+
   function draw(response) {
-    var resultsMap = new google.maps.Map(document.getElementById('zipcode-map'), {
+    if (response.erro) {
+      return;
+    };
+
+    removeClass(contentWrapper, 'hide');
+
+    ReactDOM.render(
+      <InfoMap
+        logradouro={response.logradouro}
+        bairro={response.bairro}
+        localidade={response.localidade}
+        uf={response.uf}
+        cep={response.cep} />,
+      doc.getElementById('info')
+    );
+
+    var resultsMap = new google.maps.Map(doc.getElementById('map'), {
         zoom: 100,
         center: {lat: -34.397, lng: 150.644}
       }),
@@ -30,7 +75,7 @@ app.maps = (function ($, win, doc) {
     var Title = React.createClass({
      render: function() {
        return (
-         <h1>{this.props.text}</h1>
+         <h2>{this.props.text}</h2>
        );
      }
     });
@@ -72,7 +117,10 @@ app.maps = (function ($, win, doc) {
       },
       render: function() {
         return (
-          <button type='submit' onClick={this.handler}>{this.props.text}</button>
+          <button
+            className='button'
+            type='submit'
+            onClick={this.handler}>{this.props.text}</button>
         );
       }
     });
@@ -80,25 +128,28 @@ app.maps = (function ($, win, doc) {
     var SearchBar = React.createClass({
       render: function() {
         return (
-          <header>
-            <Title text={this.props.title} />
-            <Label name={this.props.name} />
-            <Button name={this.props.name} text={this.props.buttonText} />
-          </header>
+          <div>
+            <h1>{this.props.headingTitle}</h1>
+            <div className='form'>
+              <Title text={this.props.title} />
+              <Label name={this.props.name} />
+              <Button name={this.props.name} text={this.props.buttonText} />
+            </div>
+          </div>
         );
       }
     });
 
     ReactDOM.render(
-      <SearchBar name='CEP' title='Consultar' buttonText='Buscar' />,
-      document.getElementById('zipcode')
+      <SearchBar headingTitle="Consulta de Endereço" name='CEP' title='Consultar' buttonText='Buscar' />,
+      doc.getElementById('search-bar')
     );
+
+    addEvent(doc.getElementById('hide-wrapper'), 'click', function() {
+      addClass(contentWrapper, 'hide');
+    });
   };
 
   init();
-
-  return {
-    'draw': draw
-  }
 
 }(undefined, window, window.document));

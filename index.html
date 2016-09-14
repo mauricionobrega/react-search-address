@@ -4,14 +4,24 @@
     <meta charset="UTF-8" />
     <title>Consulta de endereço</title>
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="src/css/reset.css" />
-    <link rel="stylesheet" type="text/css" href="src/css/app.css" />
+    <link rel="stylesheet" type="text/css" href="build/app.css" />
   </head>
   <body>
-    <div id="zipcode"></div>
-    <div id="zipcode-map"></div>
-    <script src="build/react.min.js"></script>
+
+    <div class="wrapper">
+      <header id="search-bar"></header>
+      <div class="content">
+        <div id="content-wrapper" class="content-wrapper hide">
+          <i id="hide-wrapper" class="close"></i>
+          <div id="info" class="info"></div>
+          <div id="map" class="map"></div>
+        </div>
+      </div>
+    </div>
+
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyChOlZRAueiZhq_lmN_bKVmdSAZL5AAyhc&signed_in=true" async defer></script>
-    <script type="text/babel" src="src/js/app.js"></script>
+    <script src="build/react.min.js"></script>
+    <script type="text/babel" src="build/app.js"></script>
+
   </body>
 </html>

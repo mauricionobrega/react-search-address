@@ -1,0 +1,153 @@
+/* http://meyerweb.com/eric/tools/css/reset/
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline; }
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block; }
+
+body {
+  line-height: 1; }
+
+ol, ul {
+  list-style: none; }
+
+blockquote, q {
+  quotes: none; }
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none; }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+.close {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  width: 25px;
+  height: 25px; }
+
+.close:before, .close:after {
+  position: absolute;
+  left: 10px;
+  content: ' ';
+  height: 22px;
+  width: 3px;
+  border: solid 1px #333;
+  background: #FFF;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px; }
+
+.close:before {
+  transform: rotate(45deg); }
+
+.close:after {
+  transform: rotate(-45deg); }
+
+html, body {
+  min-height: 100%;
+  padding: 0;
+  margin: 0;
+  font-family: 'Open Sans', sans-serif; }
+
+.wrapper {
+  padding: 172px 0 0 0;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0; }
+
+header {
+  height: 172px;
+  margin-top: -172px;
+  background-color: #EDEDED; }
+  header h1 {
+    background-color: #FFF;
+    padding: 20px 10px;
+    font-size: 2em;
+    font-weight: bold; }
+  header .form {
+    padding: 20px 30px; }
+  header h2 {
+    margin-bottom: 15px;
+    font-weight: bold; }
+  header label, header input {
+    font-size: 13px;
+    color: #555; }
+  header label, header button {
+    display: inline-block;
+    line-height: 28px; }
+  header input {
+    margin: 0 15px;
+    padding: 5px 8px;
+    border: 1px solid #AAA;
+    background-color: #FFF; }
+    header input:focus {
+      outline: none; }
+  header .button {
+    padding: 0 15px;
+    border: none;
+    background-color: #4083BB;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    -webkit-box-shadow: 3px 3px 23px -5px #706970;
+    -moz-box-shadow: 3px 3px 23px -5px #706970;
+    box-shadow: 3px 3px 23px -5px #706970;
+    border-radius: 4px;
+    color: #FFF;
+    text-decoration: none; }
+    header .button:focus {
+      outline: none; }
+
+.map {
+  height: 300px;
+  margin-top: 20px; }
+
+.content {
+  min-height: 100%; }
+
+.info label {
+  display: block;
+  margin-bottom: 5px; }
+  .info label.street-name {
+    margin-bottom: 10px;
+    font-size: 20px;
+    font-weight: bold; }
+
+.content-wrapper {
+  position: relative;
+  margin-top: 10px;
+  padding: 20px 30px;
+  border: 2px solid #AAA; }
+  .content-wrapper.hide {
+    display: none; }
